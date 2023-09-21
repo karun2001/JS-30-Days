@@ -1,0 +1,48 @@
+html{
+    background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+    font-size : 10px;
+}
+
+.clock-face{
+    width: 30rem;
+    height: 30rem;
+    border: 10px solid blue;
+    border-radius : 50%;
+    position: absolute;
+    top: 25vh;
+    left: 30vw;
+}
+
+.hand{
+    
+    background-color: black;
+    position: absolute;
+    left: 50%;
+    transform-origin: 100% 100%;
+
+}
+.hour-hand{
+    width: 6px;
+    height: 30%;
+    top: 20%
+}
+.minute-hand{
+    width: 4px;
+    height: 40%;
+    top: 10%;
+}
+.second-hand{
+    width: 2px;
+    height: 45%;
+    top: 5%;
+}
+.dot{
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    background-color: black;
+    top:47%;
+    left: 47%;
+}
+
