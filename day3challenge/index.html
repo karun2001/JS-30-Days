@@ -1,0 +1,53 @@
+<!-- js 3rd day challenge to play with css variables-->
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>Photo Editing</title>
+    </head>
+    <body>
+        <h1>Update CSS variables with <span class ="hl">JS</span></h1>
+        <div class="controls">
+            <label for = "spacing">Spacing</label>
+            <input id ="spacing" name="spacing" type="range" min="10" max="200" value ="10" data-sizing="px"/>
+            <label for="blur">Blur</label>
+            <input id ="blur" name="blur" type ="range" min="0" max ="25" value ="10" data-sizing="px"/>
+            <label for ="base">Color</label>
+            <input id ="base" name="base" type="color" value="#ffc600"/>
+        </div>
+        <img width="500px" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="random image" />
+        
+        <style>
+           
+           body{
+            text-align: center;
+            
+           }
+           :root{
+            --base : #ffc600;
+            --blur: 1px;
+            --spacing: 10px;
+           }     
+           img{
+            background: var(--base);
+            padding: var(--spacing);
+            filter: blur(var(--blur));
+           }
+           .hl{
+            color: var(--base);
+           }
+        </style>
+
+        <script>
+            const inputs = document.querySelectorAll('.controls input');
+            
+            function handleUpdate() {
+                const suffix = this.dataset.sizing || '';
+                document.documentElement.style.setProperty(`--${this.name}`,this.value + suffix)
+                
+            }
+            inputs.forEach(input => input.addEventListener('change', handleUpdate));
+            inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
+        </script>     
+    </body>
+</html> 
