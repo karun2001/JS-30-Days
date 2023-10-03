@@ -1,0 +1,1 @@
+program to selct multiple check boxes in betweenthe first and last selection(inclusive), by press holding shift key.

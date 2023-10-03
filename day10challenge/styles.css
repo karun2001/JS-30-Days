@@ -1,0 +1,36 @@
+html, body,*{
+    margin: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+body{
+    background-color: yellow;
+}
+
+.inbox{
+    background-color: white;
+    width: 300px;
+    margin: 50px auto;    
+
+}
+.item{
+    display: flex;
+    border-bottom: 1px solid rgb(211, 211, 240);
+}
+input{
+    margin: 10px;
+}
+p {
+    display: inline-block;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    border-left: 1px solid rgb(211, 211, 240);
+}
+.item:last-child{
+    border-bottom: none;
+}
+.text-deco{
+    text-decoration: line-through;
+}

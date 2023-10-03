@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name ="viewport" content="width=device-width,initial-scale=1.0"/>
+        <link href="styles.css" rel= "stylesheet" />
+        <title>Daily notes maker</title> 
+    </head>
+    <body>
+        <div class="inbox">
+            <div class="item">
+                <input type="checkbox" data-key="1"/>
+                <p class="para" data-key="1">This is an inbox</p>
+            </div>
+            <div class="item">
+                <input type="checkbox" data-key="2"/>
+                <p class="para" data-key="2">check out item</p>
+            </div>
+            <div class="item">
+                <input type="checkbox" data-key="3"/>
+                <p class="para" data-key="3">hold down our shift key</p>
+            </div>
+            <div class="item">
+                <input type="checkbox" data-key="4"/>
+                <p class="para" data-key="4">check a lower item</p>
+            </div>
+            <div class="item">
+                <input type="checkbox" data-key="5"/>
+                <p class="para" data-key="5">everything in beetween should also be checked</p>
+            </div>
+            <div class="item">
+                <input type="checkbox" data-key="6"/>
+                <p class="para" data-key="6">Try to do it without any libraries</p>
+            </div>
+            <div class="item">
+                <input type="checkbox" data-key="7"/>
+                <p class="para" data-key="7">just regular JavaScript</p>
+            </div>
+            <div class="item">
+                <input type="checkbox" data-key="8"/>
+                <p class="para" data-key="8">Good Luck!</p>
+            </div>
+        </div>
+        <script>
+            let active = false;
+            let once = true;
+            let start = -1;
+            const checkBoxes = document.querySelectorAll("input");
+            checkBoxes.forEach(checkBox => checkBox.addEventListener('click', selector));        
+            checkBoxes.forEach(checkBox => checkBox.addEventListener('keydown', shift));
+            function selector(e){
+                console.log(this);
+                const keyVal = this.dataset.key; 
+                if(once){
+                    start = keyVal;
+                    once = false ;
+                }
+                const paragraph = document.querySelector(`.para[data-key="${keyVal}"]`);
+                paragraph.classList.add("text-deco"); 
+                if(active){
+                    console.log("active : ",active);
+                    let end = keyVal;
+                    console.log("second key", end);
+                    if(start > end){
+                        let temp = start;
+                        start = end;
+                        end = temp;
+                    }
+                    for(let i=start; i<= end; i++){
+                        const paragraph = document.querySelector(`.para[data-key="${i}"]`);
+                        paragraph.classList.add("text-deco");
+                        const checkList = document.querySelector(`input[data-key="${i}"]`);
+                        checkList.checked = true;                        
+                    }
+                    active = false;
+                }
+            }
+            function shift(e){
+                console.log(e.key);
+                if(e.key == "Shift"){
+                   active = true; 
+                }
+                else{
+                    active = false;
+                }
+            }
+        </script>
+
+    </body>
+</html>
