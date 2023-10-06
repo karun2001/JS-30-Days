@@ -14,7 +14,10 @@
         window.addEventListener('keyup', (e) => {
             pressed.push(e.key);
             console.log("finalArray", pressed);
-            console.log("splicedArray", pressed.splice(-secret.length-1, pressed.length-secret.length));
+            let initial = -secret.length-1;
+            let num = pressed.length-secret.length;
+            console.log("splicedArray", pressed.splice(initial, num));
+            console.log(initial, num);
             if(pressed.join('') == secret){
                 console.log("sequence Matched");
                 cornify_add();
