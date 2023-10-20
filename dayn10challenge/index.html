@@ -51,9 +51,17 @@
             function selector(e){
                 console.log(this);
                 const keyVal = this.dataset.key; 
-                if(once){
+                if(once && e.target.checked){
                     start = keyVal;
                     once = false ;
+                }
+                if(!e.target.checked){
+                    once = true;
+                    console.log("uncheckin...");
+                    const paragraph = document.querySelector(`.para[data-key="${keyVal}"]`);
+                    paragraph.classList.remove("text-deco");
+                    console.log("removing line through");
+                    return ;
                 }
                 const paragraph = document.querySelector(`.para[data-key="${keyVal}"]`);
                 paragraph.classList.add("text-deco"); 
