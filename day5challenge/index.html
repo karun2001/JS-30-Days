@@ -45,12 +45,15 @@
     }
     function toggleActive(e) {
       console.log(e.propertyName);
-      panels.forEach(panel => panel.classList.remove('open-active'));
+        
+      
       if (e.propertyName.includes('flex')) {
         this.classList.toggle('open-active');
       }
     }
   </script>
+
+
 
 </body> 
 </html>  
