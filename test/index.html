@@ -1,20 +1,62 @@
-/*
-<script>
-  const panels = document.querySelectorAll('.panel');
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>CSS Positioning</title>
+  </head>
+  <body>
+    <div class="grandparent">
+      <div class="parent">
+        <div class="child one">One</div>
+        <div class="child two">Two</div>
+        <div class="child three">Three</div>
+        <div class="child four">Four</div>
+      </div>
+    </div>
+  </body>
+</html>
+<style>
+body {
+  margin: 100px auto;
+}
+.grandparent{
+  width: 900px;
+  border:  1px solid black;
+  position: relative;
+}
+.parent {
+  width: 500px;
+  border: 1px solid red;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
 
-  function toggleOpen() {
-    console.log('Hello');
-    this.classList.toggle('open');
-  }
+.child {
+  border-radius: 10%;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
 
-  function toggleActive(e) {
-    console.log(e.propertyName);
-    if (e.propertyName.includes('flex')) {
-      this.classList.toggle('open-active');
-    }
-  }
+.one {
+  background-color: powderblue;
+  position: absolute;
+  left: 1px;
+}
 
-  panels.forEach(panel => panel.addEventListener('click', toggleOpen));
-  panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
-</script>
-*/
+.two {
+  background-color: royalblue;
+}
+
+.three {
+  background-color: sienna;
+}
+
+.four {
+  background-color: slateblue;
+}
+</style>

@@ -38,7 +38,7 @@
       const button3 = document.querySelector('#bt3');
 
 
-      populateList(items, itemList);
+      populateList(items, itemList); //  to populate list from local storage , if not then []
       
       addItem.addEventListener('submit', addItemtoList);
       function addItemtoList(e){
@@ -61,9 +61,9 @@
             <input type="checkbox" id="item${i}" data-index="${i}" ${item.done?'checked': ''} />
             <label for="item${i}">${item.text}</label>
           </li>
-          `
-        }).join('');
+          `}).join('');
       }
+      
       itemList.addEventListener('click', toggleDown);
       function toggleDown(e){
           if(!e.target.matches('input')) return;
