@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Follow Along Nav</title>
-  <link rel="stylesheet" href="style.css" /> 
+  <link rel="stylesheet" href="DROPDOWN_style.css" /> 
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
 <body>
+
   <h2>Cool</h2>
   <nav class="top">
     <div class="dropdownBackground">
@@ -76,12 +77,21 @@
       </li>
     </ul>
   </nav>
+
+<div class="ele"></div>
+</body>
 <script>
     const triggers = document.querySelectorAll(".cool > li")
     const background = document.querySelector(".dropdownBackground");
     const nav = document.querySelector('nav');
+    const navCoords = nav.getBoundingClientRect();
     
-    function handleEnter(){
+    let aboveNav = false;
+    let find = true;  
+    
+    function handleEnter(e){
+      console.log("entered stop finding");
+      find = false;
       this.classList.add("trigger-enter");
       setTimeout(()=>{
         if(this.classList.contains("trigger-enter"))
@@ -91,9 +101,7 @@
       
       const dropdown = this.querySelector(".dropdown");      
       const dropdownCoords = dropdown.getBoundingClientRect();
-      const navCoords = nav.getBoundingClientRect();
-      
-      
+
       const coords = {
         height: dropdownCoords.height ,
         width: dropdownCoords.width,
@@ -102,17 +110,42 @@
       }
       background.style.setProperty("height",`${coords.height}px`);
       background.style.setProperty("width", `${coords.width}px`);
+
+
+
+      if(aboveNav){
+        
+      document.documentElement.style.setProperty(`--dropdown-left`,`${coords.left}px`);
+      document.documentElement.style.setProperty(`--dropdown-top`,`${coords.top}px`);
+        background.classList.add("animateDown");
+        background.style.setProperty("transform", `translate(${coords.left}px, ${coords.top}px)`);
+      }
+      else{
       background.style.setProperty("transform", `translate(${coords.left}px, ${coords.top}px)`);
+      }
     }
+
     function handleLeave(){
       console.log("LEAVE..");
       this.classList.remove("trigger-enter", "trigger-enter-active");
       background.classList.remove("open");
+      background.classList.remove("animateDown");
+      find = true;
     }
+    function mousePosition(e){
+      if(find){
+      if(e.y < navCoords.top){
+        aboveNav = true;
+      }
+      else{
+        aboveNav = false;
+      }
+    }
+    console.log(aboveNav);
+  }
+    
+    document.querySelector("body").addEventListener('mousemove', mousePosition)
     triggers.forEach(trigger => trigger.addEventListener('mouseenter',handleEnter));
     triggers.forEach(trigger => trigger.addEventListener('mouseleave',handleLeave));
 </script>
-
-</body>
 </html>
-

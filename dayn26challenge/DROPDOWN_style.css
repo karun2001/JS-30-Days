@@ -5,8 +5,12 @@ html {
 
   *, *:before, *:after {
     box-sizing: inherit;
-  }
 
+  }
+ :root{
+  --dropdown-left: 0;
+  --dropdown-top: 0;
+ }
   body {
     margin: 0;
     min-height: 100vh;
@@ -15,7 +19,8 @@ html {
       linear-gradient(135deg, hsla(225, 95%, 50%, 1) 10%, hsla(225, 95%, 50%, 0) 80%),
       linear-gradient(225deg, hsla(140, 90%, 50%, 1) 10%, hsla(140, 90%, 50%, 0) 80%),
       linear-gradient(315deg, hsla(35, 95%, 55%, 1) 100%, hsla(35, 95%, 55%, 0) 70%);
-  }
+      perspective: 1800px;
+    }
 
   h2 {
     margin-top: 0;
@@ -81,18 +86,17 @@ html {
     border-radius: 4px;
     box-shadow: 0 50px 100px rgba(50,50,93,.1), 0 15px 35px rgba(50,50,93,.15), 0 5px 15px rgba(0,0,0,.1);
     transition: all 0.3s, opacity 0.1s, transform 0.2s;
-    transform-origin: 50% 0;
+    transform-origin: 50% 0; 
+    transform : rotateX('45deg');
     display: flex;
     justify-content: center;
     opacity:0;
   }
 
-  .dropdownBackground.open {
+  .dropdownBackground.open{
     opacity: 1;
   }
-/*  .dropdownBackground.openTop{
 
-  } */
   .arrow {
     position: absolute;
     width: 20px;
@@ -143,3 +147,16 @@ html {
   .button[href*=facebook] { background: #3B5998; }
   .button[href*=courses] { background: #ffc600; }
 
+
+.animateDown{
+  animation: movedown 0.3s ease 1;
+  animation-fill-mode: forwards;
+}
+@keyframes movedown{
+  0%{
+    transform: translate(var(--dropdown-left), calc(var(--dropdown-top) - 20px));
+  }
+  100%{
+    transform : translate(var(--dropdown-left), var(--dropdown-top));
+  }
+}
