@@ -53,7 +53,7 @@
     // delete the comment with the ID of 823423
     const index = comments.findIndex(comment => comment.id == "823423");
     console.log(index);
-    const newArray = comments.splice(1,1);
+    const newArray = comments.splice(index,1);
     console.log("comments array ", comments);
     console.log("new array ", newArray);
 
