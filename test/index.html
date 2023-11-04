@@ -8,9 +8,15 @@
   <link rel="icon" href="https://fav.farm/🔥" />
 </head>
 <body>
-
+  <div class="div1"></div>
 </body>
-<script>
-
+<script> 
+  setTimeout(()=>{
+    console.log("entering");
+    document.querySelector(".div1").classList.add("addanima");
+    setTimeout(()=>{
+      document.querySelector(".div1").classList.replace("div1", "div2");
+    },1500);
+  },3000);
 </script>
 </html>

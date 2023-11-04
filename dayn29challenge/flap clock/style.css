@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: 'Teko', Arial, Helvetica, sans-serif;
+    font-weight: 100;
+}
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 500px;   
+    background: url('https://source.unsplash.com/3A4XZUopCJA') center no-repeat;
+
+}
+.wrapper{
+    width: 40%;
+    width: 450px;
+    height: 40%;
+    background-color: orangered;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.same-div{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.flap{
+    min-width: 45%;
+    height: 90%;
+    background-color: transparent;
+    font-size: 8rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.upper, .lower{
+    width: 100%;
+    min-height: 50%;   
+    position: relative
+}
+.upper{
+    transform-origin: 50% 100%;
+    background: linear-gradient(180deg,black 0%, #434343 100%);
+
+}
+.upper.hour{    
+    overflow: hidden;
+    transform :   rotateX(0deg);
+}
+.upper.minute{
+    overflow: hidden;
+    transform : rotateX(0deg);   
+}
+.lower{  
+    transform-origin: 50% 0%;
+    background: linear-gradient(180deg, #434343 0%,black 100%);
+}
+.lower.hour{
+    transform: rotateX(0deg);
+    overflow: hidden;
+    position: relative;
+}
+.lower.minute{
+    transform:  rotateX(0deg); 
+    overflow: hidden;
+    position: relative;
+}
+.lower .span{
+    position: relative;
+    color: white;
+    top: -14.5vh;
+}
+.upper .span{
+    position: relative;
+    color: white;
+    top: 3.5vh;
+}
+.box{
+    display: flex;
+    justify-content: center;
+}
+
+
+@keyframes upper-transform-first-half{
+    0%{
+        transform :  rotateX(0deg);   
+    }
+    100%{
+        transform: rotateX(90deg);
+    }
+}
+@keyframes upper-transform-second-half{
+    0%{
+        transform :  rotateX(90deg);   
+    }
+    100%{
+        transform: rotateX(180deg);
+    }
+}
+@keyframes lower-transform-first-half {
+    0%{
+        transform: rotateX(180deg);
+    }   
+    100%{
+        transform: rotateX(90deg);
+    } 
+}
+@keyframes lower-transform-second-half {
+    0%{
+        transform: rotateX(90deg);
+    }   
+    100%{
+        transform: rotateX(0deg);
+    } 
+}
+
+.front{
+    z-index: 2;
+    .box{
+        display: flex;
+        justify-content: center;
+    }
+}
+.behind{
+    z-index: 1;
+    .box{
+        display: flex;
+        justify-content: center;
+    }
+}
+.frontDownAnimationfirsthalf{
+    animation: upper-transform-first-half 3s linear forwards 1;
+}
+.frontDownAnimationsecondhalf{
+    animation: upper-transform-second-half 3s linear forwards 1;
+}
+.behindDownAnimationfirsthalf{
+    animation: lower-transform-first-half 3s linear forwards 1;
+}
+.behindDownAnimationsecondhalf{
+    animation: lower-transform-second-half 3s linear forwards 1;
+}
+
+.flag{
+    opacity: 1;
+}

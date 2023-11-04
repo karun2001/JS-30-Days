@@ -7,4 +7,30 @@ html {
     box-sizing: inherit;
 
   }
- 
+.div1{
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
+}
+.div2{
+  width: 100px;
+  height: 100px;
+  background-color: aqua;
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addanima{
+  animation: anima 6s 1;
+}
+@keyframes anima{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(45deg);
+  }
+}

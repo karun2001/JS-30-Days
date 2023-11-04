@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Video Speed Scrubber</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrapper">        
+    <div class="same-div behind" name="bh">
+      <div class="flap">
+        <div class="upper hour box"><span class="span">88</span></div>
+        <div class="lower hour box"><span class="span">88</span></div>  
+      </div>
+      <div class="flap">
+        <div class="upper minute box"><span class="span">88</span></div>
+        <div class="lower minute box"><span class="span">88</span></div>
+      </div>
+    </div>
+  
+    <div class= "same-div front" name="fw">
+      <div class="flap">
+        <div class="upper hour box"><span class="span">88</span></div>
+        <div class="lower hour box"><span class="span">88</span></div>  
+      </div>
+      <div class="flap">
+        <div class="upper minute box"><span class="span">88</span></div>
+        <div class="lower minute box"><span class="span">88</span></div>
+      </div>
+    </div>
+  </div> 
+
+<script>
+  
+  const hours = document.querySelectorAll(".hour");
+  const mins = document.querySelectorAll(".minute");
+  const front = document.querySelector(".front");
+  const behind = document.querySelector(".behind");  
+  let checkMin = 0;
+  let checkHour = 0;
+  let setMin = 0;
+  let setHour = 0;
+
+  function setDate()
+  {
+    
+    const now = new Date();                
+    
+    hours.forEach((hour) => 
+    {
+      setHour = now.getHours();      
+      if(checkHour !== setHour || setHour == 0)
+      {  
+        checkHour = setHour;      
+        document.querySelector(".behind").querySelectorAll(".hour").forEach((behhour)=>{
+            behhour.querySelector("span").innerText = setHour;
+        });
+        
+        document.querySelector(".front").querySelector(`.hour.upper`).classList.add("frontDownAnimationfirsthalf");
+        document.querySelector(".behind").querySelector(`.hour.lower`).classList.add("behindDownAnimationfirsthalf");
+        
+        setTimeout(()=>{  
+          
+          document.querySelector(".front").querySelector(`.hour.upper`).classList.remove("frontDownAnimationfirsthalf");
+          document.querySelector(".behind").querySelector(`.hour.lower`).classList.remove("behindDownAnimationfirsthalf");
+          document.querySelector(".front").classList.add("flag");          
+          document.querySelector(".behind").classList.replace("behind","front");  
+          document.querySelector(".front.flag").classList.replace("front","behind");
+          document.querySelector(".behind").classList.remove("flag");
+          document.querySelector(".behind").querySelector(`.hour.upper`).classList.add("frontDownAnimationsecondhalf");
+          document.querySelector(".front").querySelector(`.hour.lower`).classList.add("behindDownAnimationsecondhalf");
+        },3000);
+       
+        setTimeout(()=>{              
+          document.querySelector(".behind").querySelector(`.hour.upper`).classList.remove("frontDownAnimationsecondhalf");
+          document.querySelector(".front").querySelector(`.hour.lower`).classList.remove("behindDownAnimationsecondhalf");
+        },6000);
+      }
+    });  
+
+    
+    
+    mins.forEach((min) => 
+    {
+      setMin = now.getMinutes();      
+      if(checkMin !== setMin || setMin == 0)
+      {  
+        checkMin = setMin;      
+        document.querySelector(".behind").querySelectorAll(".minute").forEach((behmin)=>{
+            behmin.querySelector("span").innerText = setMin;
+        });
+        
+        document.querySelector(".front").querySelector(`.minute.upper`).classList.add("frontDownAnimationfirsthalf");
+        document.querySelector(".behind").querySelector(`.minute.lower`).classList.add("behindDownAnimationfirsthalf");
+        
+        setTimeout(()=>{  
+   
+          document.querySelector(".front").querySelector(`.minute.upper`).classList.remove("frontDownAnimationfirsthalf");
+          document.querySelector(".behind").querySelector(`.minute.lower`).classList.remove("behindDownAnimationfirsthalf");
+          document.querySelector(".front").classList.add("flag");          
+          document.querySelector(".behind").classList.replace("behind","front");  
+          document.querySelector(".front.flag").classList.replace("front","behind");
+          document.querySelector(".behind").classList.remove("flag");
+          document.querySelector(".behind").querySelector(`.minute.upper`).classList.add("frontDownAnimationsecondhalf");
+          document.querySelector(".front").querySelector(`.minute.lower`).classList.add("behindDownAnimationsecondhalf");
+        },3000);
+       
+        setTimeout(()=>{                        
+          document.querySelector(".behind").querySelector(`.minute.upper`).classList.remove("frontDownAnimationsecondhalf");
+          document.querySelector(".front").querySelector(`.minute.lower`).classList.remove("behindDownAnimationsecondhalf");
+        },6000);
+      }
+    });
+      
+  }        
+  setInterval(setDate, 1000);
+</script>
+
+</body>
+</html>
